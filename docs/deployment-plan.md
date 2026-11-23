@@ -48,11 +48,20 @@ out
 
 ### 2. Listen on Railway's port
 
-`app/main.py` defaults to `127.0.0.1:8000`. Railway sends traffic to `0.0.0.0` on the port in `PORT`. The start command passes both:
+A local run stays on `127.0.0.1:8000`. When Railway sets `PORT`, `app/main.py` listens on `0.0.0.0` and that port. The image start command is:
 
 ```
-python -m app.main --host 0.0.0.0 --port $PORT
+python -m app.main --host 0.0.0.0 --port ${PORT:-8080}
 ```
+
+These log lines mean the process started. They are not a crash:
+
+```
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8080
+```
+
+The public URL fails when the domain's target port is still 8000. Set it to the port in that log, which is 8080.
 
 ### 3. Allow the Vercel origin
 
@@ -84,13 +93,10 @@ RUN pip install --no-cache-dir -r requirements-serve.txt
 COPY app ./app
 COPY data/catalog.sqlite ./data/catalog.sqlite
 
-ENV PORT=8000
-EXPOSE 8000
-
-CMD python -m app.main --host 0.0.0.0 --port $PORT
+CMD ["/bin/sh", "-c", "exec python -m app.main --host 0.0.0.0 --port ${PORT:-8080}"]
 ```
 
-The shell form of `CMD` is required so `$PORT` expands. Railway overwrites `PORT` at runtime.
+Do not set `ENV PORT=8000` or `EXPOSE 8000`. Railway injects `PORT` and uses it as the domain target. An exposed 8000 sends visitors to a port where nothing is listening.
 
 `.dockerignore`:
 
@@ -111,8 +117,8 @@ Leave `data/catalog.sqlite` out of that list so the image copy succeeds.
 ## Railway
 
 1. Create a project from the GitHub repository. One service. Root directory is the repository root, where the `Dockerfile` sits.
-2. Railway detects the `Dockerfile` and builds it. Set the health check path to `/health`.
-3. Generate a public domain. It looks like `https://<service>.up.railway.app`. No trailing slash.
+2. Railway detects the `Dockerfile` and builds it. `railway.toml` sets the health check path to `/health`.
+3. Generate a public domain. It looks like `https://<service>.up.railway.app`. No trailing slash. In **Settings → Networking**, set that domain's target port to the port in the Uvicorn log. On Railway that is **8080**, not 8000.
 4. Variables, only if you later want model ranking:
    - `LLM_BASE_URL` = `https://api.groq.com/openai/v1`
    - `LLM_API_KEY` = the Groq key, typed into Railway's variable UI

@@ -96,8 +96,9 @@ async def _form_fields(request: Request) -> dict[str, str]:
 def main(argv: list[str] | None = None) -> None:
     parser = argparse.ArgumentParser(description="Serve restaurant recommendations.")
     parser.add_argument("--catalog", type=Path, default=CATALOG_PATH)
-    parser.add_argument("--host", default="127.0.0.1")
-    parser.add_argument("--port", type=int, default=8000)
+    # Railway injects PORT and reaches the container on 0.0.0.0. A local run keeps 127.0.0.1:8000.
+    parser.add_argument("--host", default="0.0.0.0" if os.environ.get("PORT") else "127.0.0.1")
+    parser.add_argument("--port", type=int, default=int(os.environ.get("PORT", "8000")))
     args = parser.parse_args(argv)
     catalog = load_catalog(args.catalog)
     import uvicorn
