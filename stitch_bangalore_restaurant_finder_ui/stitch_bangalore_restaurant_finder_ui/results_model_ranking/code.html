@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-background": "#e8e1dd", "surface-container-highest": "#373432", "primary-container": "#e8b84a", "on-primary-fixed": "#261a00", "on-primary-container": "#644900", "surface-variant": "#373432", "on-secondary-fixed": "#211b0c", "secondary": "#d1c5ae", "on-secondary-container": "#c0b49d", "secondary-fixed-dim": "#d1c5ae", "outline": "#9b8f7c", "on-tertiary-fixed": "#201b13", "surface-container": "#221f1d", "on-tertiary-fixed-variant": "#4d453d", "surface-tint": "#f0c051", "primary": "#ffd57e", "on-primary": "#402d00", "tertiary-fixed": "#ede0d5", "background": "#151311", "surface-dim": "#151311", "inverse-on-surface": "#33302d", "tertiary": "#e5d9cd", "on-secondary": "#37301f", "secondary-fixed": "#eee1c9", "surface-container-low": "#1d1b19", "error-container": "#93000a", "surface-container-high": "#2c2927", "inverse-surface": "#e8e1dd", "surface-bright": "#3c3936", "primary-fixed": "#ffdf9f", "primary-fixed-dim": "#f0c051", "inverse-primary": "#795900", "tertiary-container": "#c9bdb2", "on-secondary-fixed-variant": "#4e4634", "on-error": "#690005", "on-surface": "#e8e1dd", "tertiary-fixed-dim": "#d0c5b9", "outline-variant": "#4e4636", "secondary-container": "#4e4634", "on-tertiary": "#362f27", "surface": "#151311", "on-surface-variant": "#d2c5b0", "on-tertiary-container": "#544c43", "surface-container-lowest": "#100e0c", "error": "#ffb4ab", "on-primary-fixed-variant": "#5b4300", "on-error-container": "#ffdad6" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "gutter": "1.5rem", "space-sm": "0.5rem", "space-lg": "1.5rem", "space-md": "1rem", "space-xs": "0.25rem", "margin": "2rem", "space-xl": "2.5rem" }, "fontFamily": { "body-md": ["Inter"], "headline-sm": ["Inter"], "body-sm": ["Inter"], "label-md": ["Inter"], "headline-xl": ["Inter"], "label-sm": ["Inter"], "body-lg": ["Inter"], "headline-lg": ["Inter"], "headline-md": ["Inter"] }, "fontSize": { "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "500" }], "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }], "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }], "headline-xl": ["44px", { "lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "600" }], "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }], "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "500" }] } } } }</script><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..205" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/></head><body class="bg-surface font-body-md text-on-surface"><header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 max-w-7xl mx-auto px-margin flex items-center justify-between"><div class="flex items-center gap-space-md"><span class="material-symbols-outlined text-primary text-headline-md">restaurant</span><span class="font-headline-md text-on-surface font-bold tracking-tight">Saffron & Stone</span></div><nav class="hidden md:flex items-center gap-space-lg" data-active-classes="bg-primary text-on-primary font-bold rounded-lg"><a aria-current="page" class="transition-colors px-space-md py-space-sm bg-primary text-on-primary font-bold rounded-lg" data-path="discover" href="#">Discover</a><a class="text-body-md text-on-surface-variant hover:text-on-surface transition-colors px-space-md py-space-sm" data-path="explore-map" href="#">Explore Map</a><a class="text-body-md text-on-surface-variant hover:text-on-surface transition-colors px-space-md py-space-sm" data-path="saved-spots" href="#">Saved Spots</a></nav><div class="flex items-center gap-space-md"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-surface max-w-7xl mx-auto px-margin min-h-screen"><div class="flex flex-col w-full pb-space-xl">
+<!-- Hero / Summary Header Area -->
+<div class="flex flex-col gap-space-md mb-space-xl pt-space-md">
+<div class="flex items-center justify-between flex-wrap gap-space-md">
+<div>
+<span class="text-label-sm uppercase tracking-wider text-primary font-bold">Bangalore Culinary Intelligence</span>
+<h1 class="font-headline-lg text-on-surface tracking-tight mt-space-xs">5 restaurants matched</h1>
+</div>
+<div class="flex items-center gap-space-md">
+<button class="bg-surface-container-high hover:bg-surface-container-highest text-on-surface px-space-md py-space-sm rounded-lg flex items-center gap-space-sm text-body-md transition-all">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+<span>Edit Preferences</span>
+</button>
+<button class="bg-primary hover:bg-primary-fixed text-on-primary font-bold px-space-md py-space-sm rounded-lg flex items-center gap-space-sm text-body-md transition-all">
+<span class="material-symbols-outlined text-[18px]">bookmark</span>
+<span>Save Search</span>
+</button>
+</div>
+</div>
+<!-- Summary Banner -->
+<div class="bg-[#13261b] text-[#dcfce7] p-space-md rounded-xl flex items-start gap-space-md shadow-sm" style="border: 1px solid #166534;">
+<span class="material-symbols-outlined text-primary text-[24px] mt-0.5" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div class="flex flex-col">
+<p class="text-body-lg font-medium leading-relaxed">Casual dining places in Bangalore that serve Chinese and clear a 4 rating.</p>
+<p class="text-body-sm text-[#86efac] mt-space-xs">Sorted by model rank using predictive flavor profiles, service speed metrics, and neighborhood popularity index.</p>
+</div>
+</div>
+</div>
+<!-- Main Layout Grid: Preference Sidebar (Mini) + Results List -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl">
+<!-- Left Sticky Preference Summary -->
+<div class="lg:col-span-4 flex flex-col gap-space-md">
+<div class="bg-surface-container-low rounded-xl p-space-lg shadow-md sticky top-28">
+<div class="flex items-center justify-between mb-space-md pb-space-sm" style="border-bottom: 1px solid rgba(155, 143, 124, 0.15);">
+<h3 class="font-headline-sm text-on-surface flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary">filter_alt</span>
+            Active Criteria
+          </h3>
+<span class="text-body-sm text-primary bg-primary/10 px-space-sm py-0.5 rounded font-bold">Model v4.2</span>
+</div>
+<div class="flex flex-col gap-space-md">
+<!-- Location -->
+<div class="flex items-center justify-between">
+<span class="text-body-sm text-on-surface-variant flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[16px]">location_on</span> Location
+            </span>
+<span class="text-body-md font-medium text-on-surface">Bangalore</span>
+</div>
+<!-- Budget -->
+<div class="flex items-center justify-between">
+<span class="text-body-sm text-on-surface-variant flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[16px]">payments</span> Budget
+            </span>
+<span class="text-body-md font-medium text-on-surface">Medium (~₹1,200 for two)</span>
+</div>
+<!-- Cuisine -->
+<div class="flex items-center justify-between">
+<span class="text-body-sm text-on-surface-variant flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[16px]">restaurant_menu</span> Cuisine
+            </span>
+<span class="text-body-md font-medium text-on-surface">Chinese</span>
+</div>
+<!-- Min Rating -->
+<div class="flex items-center justify-between">
+<span class="text-body-sm text-on-surface-variant flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[16px]">star</span> Min Rating
+            </span>
+<span class="text-body-md font-medium text-on-surface flex items-center gap-1">
+              4.0+ <span class="material-symbols-outlined text-primary text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</span>
+</div>
+<!-- Extra Preference -->
+<div class="flex items-center justify-between">
+<span class="text-body-sm text-on-surface-variant flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[16px]">bolt</span> Extra
+            </span>
+<span class="text-body-sm bg-surface-container-highest text-on-surface px-space-sm py-0.5 rounded-full">Quick Service</span>
+</div>
+</div>
+<div class="mt-space-lg pt-space-md" style="border-top: 1px solid rgba(155, 143, 124, 0.15);">
+<div class="bg-surface-container p-space-md rounded-lg flex items-center justify-between">
+<span class="text-body-sm text-on-surface-variant">Model Confidence</span>
+<span class="text-label-md text-primary font-bold">96.4% Match</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Restaurant Model Ranking Cards -->
+<div class="lg:col-span-8 flex flex-col gap-space-lg">
+<!-- Rank 1 Card: Jalsa -->
+<div class="bg-surface-container-low rounded-xl overflow-hidden shadow-lg transition-all hover:shadow-2xl flex flex-col md:flex-row group">
+<div class="md:w-72 h-56 md:h-auto bg-cover bg-center relative" data-alt="An atmospheric upscale dining room in Bangalore with warm amber lighting, ornate golden wall motifs, polished wooden tables set with fine porcelain, and subtle ambient shadows creating an exclusive speakeasy mood." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDghZNY8NZFUYW7HVGtLcLOPkoThXkgaXvvxxWSKrPDM8ujoy87kk0jROXNTnaIEprTuMfD9f7XbIpKvxxJZXs-i0cBlyYGyLxCXFWSz6Oef0_Jl4ypGlYmGZuoq272zSb7tL2Exa9O4ibrD5xIpJeADBkBp9Sj8ZAdEV3ujdlRRhnJFHfmHmv15vSzje1pwJALXI7ysBMP-zZLAqDsUjN-q83USVzYFIsLSsK0p-A')">
+<div class="absolute top-space-md left-space-md bg-primary text-on-primary font-bold text-label-sm px-space-sm py-1 rounded shadow-md">
+            RANK #1
+          </div>
+<div class="absolute bottom-space-md left-space-md bg-surface/80 backdrop-blur-md px-space-sm py-0.5 rounded text-body-sm text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<span>98% Match Score</span>
+</div>
+</div>
+<div class="p-space-lg flex-1 flex flex-col justify-between">
+<div>
+<div class="flex items-start justify-between gap-space-sm">
+<div>
+<a class="font-headline-md text-primary hover:underline font-bold tracking-tight" href="#">Jalsa</a>
+<p class="text-body-sm text-on-surface-variant mt-0.5">Indiranagar • Chinese, North Indian, Continental</p>
+</div>
+<div class="bg-[#13261b] text-[#dcfce7] px-space-sm py-1 rounded flex items-center gap-1 text-label-md font-bold" style="border: 1px solid #166534;">
+<span>4.4</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-space-md mt-space-md text-body-sm text-on-surface-variant">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-outline">payments</span>
+                ₹1,400 for two
+              </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-outline">schedule</span>
+                Quick Service: ~22 mins
+              </span>
+</div>
+<p class="text-body-md text-on-surface mt-space-md leading-relaxed">
+              Jalsa delivers an exceptional blend of rapid wok-station preparation and rich Sichuan flavors. Praised for its lightning-fast kitchen turnover and immersive ambient lighting, making it an ideal choice for high-speed culinary indulgence.
+            </p>
+</div>
+<div class="flex items-center justify-between mt-space-lg pt-space-md" style="border-top: 1px solid rgba(155, 143, 124, 0.15);">
+<div class="flex items-center gap-space-md text-body-sm">
+<span class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">check</span> Online Order: Yes
+              </span>
+<span class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">check</span> Table Booking: Yes
+              </span>
+</div>
+<button class="bg-primary hover:bg-primary-fixed text-on-primary font-bold text-label-md px-space-md py-space-sm rounded-lg transition-all">
+              Reserve Table
+            </button>
+</div>
+</div>
+</div>
+<!-- Rank 2 Card: Vidyarthi Bhavan -->
+<div class="bg-surface-container-low rounded-xl overflow-hidden shadow-lg transition-all hover:shadow-2xl flex flex-col md:flex-row group">
+<div class="md:w-72 h-56 md:h-auto bg-cover bg-center relative" data-alt="A historic and bustling heritage restaurant in Bangalore with vintage wooden wall panels, bustling patrons enjoying traditional South Indian snacks, warm tungsten lighting, and an energetic old-world charm atmosphere." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBYi9jExfEJBSOTUhTR3SIryeQmImuxBDL3GZsxNRXaRahTBQK9DIRIVSdLx0cSztH4VAMa7-_HZjY-M6B9P0Ot4IlhtSjX7zyN-QfXUMkG23VmUUd4_C4HedN9dOsWWrBvoM4ndbDm1OKX2w1JyS2-1UIagOk3DWUAg0kDClCq2RT-ZWw3oPpHEyMW-EQmbbOSvn_G8xv6nue9pl5hgLtJGGF5x4rmdJm6t0dbOGg')">
+<div class="absolute top-space-md left-space-md bg-surface-container-highest text-on-surface font-bold text-label-sm px-space-sm py-1 rounded shadow-md">
+            RANK #2
+          </div>
+<div class="absolute bottom-space-md left-space-md bg-surface/80 backdrop-blur-md px-space-sm py-0.5 rounded text-body-sm text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+<span>94% Match Score</span>
+</div>
+</div>
+<div class="p-space-lg flex-1 flex flex-col justify-between">
+<div>
+<div class="flex items-start justify-between gap-space-sm">
+<div>
+<a class="font-headline-md text-primary hover:underline font-bold tracking-tight" href="#">Vidyarthi Bhavan</a>
+<p class="text-body-sm text-on-surface-variant mt-0.5">Basavanagudi • South Indian, Fast Food, Chinese Fusion</p>
+</div>
+<div class="bg-[#13261b] text-[#dcfce7] px-space-sm py-1 rounded flex items-center gap-1 text-label-md font-bold" style="border: 1px solid #166534;">
+<span>4.5</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-space-md mt-space-md text-body-sm text-on-surface-variant">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-outline">payments</span>
+                ₹250 for two
+              </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-outline">schedule</span>
+                Quick Service: ~10 mins
+              </span>
+</div>
+<p class="text-body-md text-on-surface mt-space-md leading-relaxed">
+              An iconic Bangalore institution legendary for lightning-fast service throughput. While primarily famous for dosas, their newly curated Indo-Chinese snack line maintains the legendary 10-minute turnaround speed.
+            </p>
+</div>
+<div class="flex items-center justify-between mt-space-lg pt-space-md" style="border-top: 1px solid rgba(155, 143, 124, 0.15);">
+<div class="flex items-center gap-space-md text-body-sm">
+<span class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">close</span> Online Order: No
+              </span>
+<span class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">close</span> Table Booking: No
+              </span>
+</div>
+<button class="bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-bold text-label-md px-space-md py-space-sm rounded-lg transition-all">
+              View Directions
+            </button>
+</div>
+</div>
+</div>
+<!-- Rank 3 Card: The Biere Club -->
+<div class="bg-surface-container-low rounded-xl overflow-hidden shadow-lg transition-all hover:shadow-2xl flex flex-col md:flex-row group">
+<div class="md:w-72 h-56 md:h-auto bg-cover bg-center relative" data-alt="A modern industrial microbrewery in Bangalore featuring exposed brick walls, gleaming copper brewing vats, vibrant neon accents, and plush leather bar seating under soft amber pendant lighting." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCuTGydJGcuZCvF-N9jT3ovCUvhs6dBwBmA-tACs05DAJMd7ERn0XQi4AcKGGsxn4jM3uodIrVHhT5_TSUAmDuw_VjPVSNCPlBDbcWj40YX0ELr-7s_iSCL08FI7VBtULGhTtfb6B_x2j5JRtL-9sBcPeXbQDz9NbLGuFef8DIAvWcQH4dtr58wniMTt6-LlwGhyCPev-PfuUKW69y7QXHo_RrHbt_ESj9MDnAECxE')">
+<div class="absolute top-space-md left-space-md bg-surface-container-highest text-on-surface font-bold text-label-sm px-space-sm py-1 rounded shadow-md">
+            RANK #3
+          </div>
+<div class="absolute bottom-space-md left-space-md bg-surface/80 backdrop-blur-md px-space-sm py-0.5 rounded text-body-sm text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span>91% Match Score</span>
+</div>
+</div>
+<div class="p-space-lg flex-1 flex flex-col justify-between">
+<div>
+<div class="flex items-start justify-between gap-space-sm">
+<div>
+<a class="font-headline-md text-primary hover:underline font-bold tracking-tight" href="#">The Biere Club</a>
+<p class="text-body-sm text-on-surface-variant mt-0.5">Lavelle Road • Continental, Asian, Chinese Starters</p>
+</div>
+<div class="bg-[#13261b] text-[#dcfce7] px-space-sm py-1 rounded flex items-center gap-1 text-label-md font-bold" style="border: 1px solid #166534;">
+<span>4.2</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-space-md mt-space-md text-body-sm text-on-surface-variant">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-outline">payments</span>
+                ₹1,800 for two
+              </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-outline">schedule</span>
+                Quick Service: ~25 mins
+              </span>
+</div>
+<p class="text-body-md text-on-surface mt-space-md leading-relaxed">
+              Bangalore's pioneer microbrewery pairs craft ales with a robust selection of high-velocity Asian finger foods. Excellent table service and swift appetizer delivery ensure a seamless dining experience.
+            </p>
+</div>
+<div class="flex items-center justify-between mt-space-lg pt-space-md" style="border-top: 1px solid rgba(155, 143, 124, 0.15);">
+<div class="flex items-center gap-space-md text-body-sm">
+<span class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">check</span> Online Order: Yes
+              </span>
+<span class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">check</span> Table Booking: Yes
+              </span>
+</div>
+<button class="bg-primary hover:bg-primary-fixed text-on-primary font-bold text-label-md px-space-md py-space-sm rounded-lg transition-all">
+              Reserve Table
+            </button>
+</div>
+</div>
+</div>
+<!-- Rank 4 Card: Nagarjuna -->
+<div class="bg-surface-container-low rounded-xl overflow-hidden shadow-lg transition-all hover:shadow-2xl flex flex-col md:flex-row group">
+<div class="md:w-72 h-56 md:h-auto bg-cover bg-center relative" data-alt="A lively and contemporary dining hall in Bangalore with clean minimalist decor, warm wooden chairs, polished stone tables, and soft glowing sconces reflecting a vibrant culinary atmosphere." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDSqzugiN1kYV7eobljulfwpt89WpWsIOPL6pdi92AkOQpFzGTm9kWRo_peMiJKz14rMeMAEwrD8vLHETNbpV2ZtzxTFrBNvGEqZXzkVZG8p_COXJmkrNv0MUR-_vIalRQk7WLKe_gjIGiXUsC8t1u11c54njyxtgfERVuP8skvqHMc220WUVfUHx6Oqc979SHGY7DS8VdPactsL3Dj_3O3tSreNZt3bottjbFGCiQ')">
+<div class="absolute top-space-md left-space-md bg-surface-container-highest text-on-surface font-bold text-label-sm px-space-sm py-1 rounded shadow-md">
+            RANK #4
+          </div>
+<div class="absolute bottom-space-md left-space-md bg-surface/80 backdrop-blur-md px-space-sm py-0.5 rounded text-body-sm text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<span>89% Match Score</span>
+</div>
+</div>
+<div class="p-space-lg flex-1 flex flex-col justify-between">
+<div>
+<div class="flex items-start justify-between gap-space-sm">
+<div>
+<a class="font-headline-md text-primary hover:underline font-bold tracking-tight" href="#">Nagarjuna</a>
+<p class="text-body-sm text-on-surface-variant mt-0.5">Residency Road • Andhra, Chinese, Biryani</p>
+</div>
+<div class="bg-[#13261b] text-[#dcfce7] px-space-sm py-1 rounded flex items-center gap-1 text-label-md font-bold" style="border: 1px solid #166534;">
+<span>4.3</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-space-md mt-space-md text-body-sm text-on-surface-variant">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-outline">payments</span>
+                ₹900 for two
+              </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-outline">schedule</span>
+                Quick Service: ~15 mins
+              </span>
+</div>
+<p class="text-body-md text-on-surface mt-space-md leading-relaxed">
+              Famed for its fiery Andhra cuisine, Nagarjuna also runs an impressively organized Chinese wok division with remarkably short wait times during peak afternoon hours.
+            </p>
+</div>
+<div class="flex items-center justify-between mt-space-lg pt-space-md" style="border-top: 1px solid rgba(155, 143, 124, 0.15);">
+<div class="flex items-center gap-space-md text-body-sm">
+<span class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">check</span> Online Order: Yes
+              </span>
+<span class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">close</span> Table Booking: No
+              </span>
+</div>
+<button class="bg-primary hover:bg-primary-fixed text-on-primary font-bold text-label-md px-space-md py-space-sm rounded-lg transition-all">
+              Order Online
+            </button>
+</div>
+</div>
+</div>
+<!-- Rank 5 Card: MTR (Mavalli Tiffin Room) -->
+<div class="bg-surface-container-low rounded-xl overflow-hidden shadow-lg transition-all hover:shadow-2xl flex flex-col md:flex-row group">
+<div class="md:w-72 h-56 md:h-auto bg-cover bg-center relative" data-alt="A legendary heritage dining landmark in Bangalore with classic art deco architectural details, immaculate white-clothed tables, brass serving ware, and a dignified old-school ambiance." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDs6Sibp9xTYB4bw8Q1nn_BhmQFNpaHHJWe4Cen9Ri4ydy9otgHgSTjNFPaqsOu6pDseLbhdiDIehrsxrYWUASHOnyG15btTWjVdmngwYW50yJc56A45EMv9en-esATN9DNzfHA6kLgnJ19bpcnLqPfF6ETrrIuiqhHedFpokaqTnBAra39Ej6N59NIjQWDtJcgexjf1E-25dwet8JASep0eOsCn3DqiqNmlKaqYEs')">
+<div class="absolute top-space-md left-space-md bg-surface-container-highest text-on-surface font-bold text-label-sm px-space-sm py-1 rounded shadow-md">
+            RANK #5
+          </div>
+<div class="absolute bottom-space-md left-space-md bg-surface/80 backdrop-blur-md px-space-sm py-0.5 rounded text-body-sm text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span>87% Match Score</span>
+</div>
+</div>
+<div class="p-space-lg flex-1 flex flex-col justify-between">
+<div>
+<div class="flex items-start justify-between gap-space-sm">
+<div>
+<a class="font-headline-md text-primary hover:underline font-bold tracking-tight" href="#">MTR (Mavalli Tiffin Room)</a>
+<p class="text-body-sm text-on-surface-variant mt-0.5">Lalbagh Road • South Indian, Traditional, Snacks</p>
+</div>
+<div class="bg-[#13261b] text-[#dcfce7] px-space-sm py-1 rounded flex items-center gap-1 text-label-md font-bold" style="border: 1px solid #166534;">
+<span>4.1</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-space-md mt-space-md text-body-sm text-on-surface-variant">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-outline">payments</span>
+                ₹300 for two
+              </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-outline">schedule</span>
+                Quick Service: ~12 mins
+              </span>
+</div>
+<p class="text-body-md text-on-surface mt-space-md leading-relaxed">
+              A historical culinary landmark providing pristine quality and ultra-efficient table rotation. While steeped in heritage South Indian tradition, its systematic pacing matches the quick-service criteria securely.
+            </p>
+</div>
+<div class="flex items-center justify-between mt-space-lg pt-space-md" style="border-top: 1px solid rgba(155, 143, 124, 0.15);">
+<div class="flex items-center gap-space-md text-body-sm">
+<span class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">close</span> Online Order: No
+              </span>
+<span class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">close</span> Table Booking: No
+              </span>
+</div>
+<button class="bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-bold text-label-md px-space-md py-space-sm rounded-lg transition-all">
+              View Directions
+            </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></main><footer class="w-full bg-surface-container-low py-margin mt-space-xl"><div class="max-w-7xl mx-auto px-margin flex flex-col md:flex-row items-center justify-between text-on-surface-variant text-body-sm"><p>© 2024 Saffron & Stone. Culinary Discovery in Bangalore.</p><div class="flex gap-space-lg mt-space-md md:mt-0"><a class="hover:text-on-surface" href="#">Privacy</a><a class="hover:text-on-surface" href="#">Terms</a><a class="hover:text-on-surface" href="#">Contact</a></div></div></footer></body></html>

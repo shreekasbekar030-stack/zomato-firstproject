@@ -1,0 +1,9 @@
+.venv
+.git
+.env
+frontend
+tests
+docs
+stitch_bangalore_restaurant_finder_ui
+**/__pycache__
+.pytest_cache

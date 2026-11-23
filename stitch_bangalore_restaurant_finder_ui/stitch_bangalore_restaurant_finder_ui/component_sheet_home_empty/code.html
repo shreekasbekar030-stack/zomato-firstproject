@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-background": "#e8e1dd", "surface-container-highest": "#373432", "primary-container": "#e8b84a", "on-primary-fixed": "#261a00", "on-primary-container": "#644900", "surface-variant": "#373432", "on-secondary-fixed": "#211b0c", "secondary": "#d1c5ae", "on-secondary-container": "#c0b49d", "secondary-fixed-dim": "#d1c5ae", "outline": "#9b8f7c", "on-tertiary-fixed": "#201b13", "surface-container": "#221f1d", "on-tertiary-fixed-variant": "#4d453d", "surface-tint": "#f0c051", "primary": "#ffd57e", "on-primary": "#402d00", "tertiary-fixed": "#ede0d5", "background": "#151311", "surface-dim": "#151311", "inverse-on-surface": "#33302d", "tertiary": "#e5d9cd", "on-secondary": "#37301f", "secondary-fixed": "#eee1c9", "surface-container-low": "#1d1b19", "error-container": "#93000a", "surface-container-high": "#2c2927", "inverse-surface": "#e8e1dd", "surface-bright": "#3c3936", "primary-fixed": "#ffdf9f", "primary-fixed-dim": "#f0c051", "inverse-primary": "#795900", "tertiary-container": "#c9bdb2", "on-secondary-fixed-variant": "#4e4634", "on-error": "#690005", "on-surface": "#e8e1dd", "tertiary-fixed-dim": "#d0c5b9", "outline-variant": "#4e4636", "secondary-container": "#4e4634", "on-tertiary": "#362f27", "surface": "#151311", "on-surface-variant": "#d2c5b0", "on-tertiary-container": "#544c43", "surface-container-lowest": "#100e0c", "error": "#ffb4ab", "on-primary-fixed-variant": "#5b4300", "on-error-container": "#ffdad6" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "gutter": "1.5rem", "space-sm": "0.5rem", "space-lg": "1.5rem", "space-md": "1rem", "space-xs": "0.25rem", "margin": "2rem", "space-xl": "2.5rem" }, "fontFamily": { "body-md": ["Inter"], "headline-sm": ["Inter"], "body-sm": ["Inter"], "label-md": ["Inter"], "headline-xl": ["Inter"], "label-sm": ["Inter"], "body-lg": ["Inter"], "headline-lg": ["Inter"], "headline-md": ["Inter"] }, "fontSize": { "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "500" }], "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }], "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }], "headline-xl": ["44px", { "lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "600" }], "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }], "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "500" }] } } } }</script><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..205" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/></head><body class="bg-surface font-body-md text-on-surface"><header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 max-w-7xl mx-auto px-margin flex items-center justify-between"><div class="flex items-center gap-space-md"><span class="material-symbols-outlined text-primary text-headline-md">restaurant</span><span class="font-headline-md text-on-surface font-bold tracking-tight">Saffron & Stone</span></div><nav class="hidden md:flex items-center gap-space-lg" data-active-classes="bg-primary text-on-primary font-bold rounded-lg"><a aria-current="page" class="transition-colors px-space-md py-space-sm bg-primary text-on-primary font-bold rounded-lg" data-path="discover" href="#">Discover</a><a class="text-body-md text-on-surface-variant hover:text-on-surface transition-colors px-space-md py-space-sm" data-path="explore-map" href="#">Explore Map</a><a class="text-body-md text-on-surface-variant hover:text-on-surface transition-colors px-space-md py-space-sm" data-path="saved-spots" href="#">Saved Spots</a></nav><div class="flex items-center gap-space-md"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-surface max-w-7xl mx-auto px-margin min-h-screen"><div class="flex flex-col w-full pb-24">
+<!-- Top Navigation / Tab Switcher between Component Sheet & Home Form -->
+<div class="flex items-center justify-between border-b border-outline-variant/30 pb-space-md mb-space-xl">
+<div class="flex items-center gap-space-md">
+<button class="px-space-md py-space-sm rounded-lg bg-primary text-on-primary font-bold text-label-md transition-all" id="tab-home" onclick="switchTab('home')">Home Screen</button>
+<button class="px-space-md py-space-sm rounded-lg bg-surface-container text-on-surface-variant hover:text-on-surface font-medium text-label-md transition-all" id="tab-components" onclick="switchTab('components')">Component Sheet</button>
+</div>
+<div class="text-body-sm text-outline font-mono">Bangalore Culinary Directory v2.4</div>
+</div>
+<!-- HOME SCREEN VIEW (Empty Form) -->
+<div class="flex flex-col w-full max-w-3xl mx-auto space-y-space-xl" id="view-home">
+<!-- AppHeader -->
+<div class="flex flex-col space-y-space-xs">
+<div class="text-label-sm uppercase tracking-wider text-primary font-mono">Restaurant finder</div>
+<h1 class="font-headline-lg text-on-surface font-semibold tracking-tight">Find a restaurant</h1>
+<p class="text-body-md text-on-surface-variant max-w-xl">
+        Search authenticated dining spots across Bangalore by cuisine, precise location, and strict budget tiers.
+      </p>
+</div>
+<!-- BudgetEdges description -->
+<div class="p-space-md rounded-xl bg-surface-container border border-outline-variant/40 flex items-start gap-space-md">
+<span class="material-symbols-outlined text-primary mt-0.5">info</span>
+<div class="flex flex-col space-y-1 text-body-sm text-on-surface-variant">
+<span class="font-medium text-on-surface">Budget Tier Guidelines</span>
+<p>Low is at or under ₹300 for two. Medium is ₹300–₹2000 for two. High is above ₹2000 for two.</p>
+</div>
+</div>
+<!-- PreferenceForm -->
+<form class="flex flex-col space-y-space-lg bg-surface-container-low p-space-xl rounded-xl border border-outline-variant/30 shadow-xl" onsubmit="event.preventDefault(); alert('Form submitted in empty state.');">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-lg">
+<!-- Field: Location -->
+<div class="flex flex-col space-y-space-xs">
+<label class="text-label-md text-on-surface font-medium flex items-center justify-between">
+<span>Location / Neighborhood</span>
+<span class="text-body-sm text-outline">Required</span>
+</label>
+<div class="relative">
+<select class="w-full h-12 bg-surface-container border border-outline-variant rounded-lg px-space-md text-on-surface text-body-md appearance-none focus:outline-none focus:border-primary transition-colors">
+<option disabled="" selected="" value="">Select Bangalore neighborhood...</option>
+<option value="indiranagar">Indiranagar</option>
+<option value="koramangala">Koramangala</option>
+<option value="mg-road">MG Road / Central</option>
+<option value="jayanagar">Jayanagar</option>
+<option value="whitefield">Whitefield</option>
+<option value="hebbal">Hebbal</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-3 text-outline pointer-events-none">expand_more</span>
+</div>
+<span class="text-body-sm text-outline">Choose your primary dining district</span>
+</div>
+<!-- Field: Budget -->
+<div class="flex flex-col space-y-space-xs">
+<label class="text-label-md text-on-surface font-medium flex items-center justify-between">
+<span>Budget Tier</span>
+<span class="text-body-sm text-outline">Required</span>
+</label>
+<div class="relative">
+<select class="w-full h-12 bg-surface-container border border-outline-variant rounded-lg px-space-md text-on-surface text-body-md appearance-none focus:outline-none focus:border-primary transition-colors">
+<option disabled="" selected="" value="">Select budget tier...</option>
+<option value="low">Low (≤ ₹300 for two)</option>
+<option value="medium">Medium (₹300 - ₹2000 for two)</option>
+<option value="high">High (> ₹2000 for two)</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-3 text-outline pointer-events-none">expand_more</span>
+</div>
+<span class="text-body-sm text-outline">Based on average meal cost for two guests</span>
+</div>
+<!-- Field: Cuisine -->
+<div class="flex flex-col space-y-space-xs">
+<label class="text-label-md text-on-surface font-medium">Cuisine Preference</label>
+<input class="w-full h-12 bg-surface-container border border-outline-variant rounded-lg px-space-md text-on-surface text-body-md placeholder:text-outline focus:outline-none focus:border-primary transition-colors" placeholder="e.g., Dakshin, Continental, Cafes" type="text"/>
+<span class="text-body-sm text-outline">Leave blank for all available culinary styles</span>
+</div>
+<!-- Field: Minimum Rating -->
+<div class="flex flex-col space-y-space-xs">
+<label class="text-label-md text-on-surface font-medium">Minimum Rating</label>
+<input class="w-full h-12 bg-surface-container border border-outline-variant rounded-lg px-space-md text-on-surface text-body-md placeholder:text-outline focus:outline-none focus:border-primary transition-colors" placeholder="e.g., 4.2" type="text"/>
+<span class="text-body-sm text-outline">Scale from 1.0 to 5.0</span>
+</div>
+</div>
+<!-- Field: Extra preference (TextArea) -->
+<div class="flex flex-col space-y-space-xs">
+<label class="text-label-md text-on-surface font-medium">Additional Preferences or Dietary Notes</label>
+<textarea class="w-full bg-surface-container border border-outline-variant rounded-lg p-space-md text-on-surface text-body-md placeholder:text-outline focus:outline-none focus:border-primary transition-colors resize-none" placeholder="Specify seating style, outdoor terrace requirements, or allergen constraints..." rows="3"></textarea>
+<span class="text-body-sm text-outline">Optional specifications for precise venue filtering</span>
+</div>
+<!-- PrimaryButton -->
+<div class="pt-space-md flex items-center justify-end">
+<button class="w-full md:w-auto min-w-[200px] h-12 bg-primary text-on-primary hover:bg-primary-fixed transition-colors font-bold text-label-md rounded-lg flex items-center justify-center gap-space-sm shadow-md" type="submit">
+<span>Find restaurants</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</form>
+</div>
+<!-- COMPONENT SHEET VIEW -->
+<div class="hidden flex-col w-full max-w-4xl mx-auto space-y-space-xl" id="view-components">
+<div class="flex flex-col space-y-space-xs">
+<div class="text-label-sm uppercase tracking-wider text-primary font-mono">Design System</div>
+<h1 class="font-headline-lg text-on-surface font-semibold">Component Sheet</h1>
+<p class="text-body-md text-on-surface-variant">Exhaustive list of design tokens, color swatches, typography hierarchies, and modular component states.</p>
+</div>
+<!-- 1. Color Palette Swatches -->
+<div class="flex flex-col space-y-space-md bg-surface-container-low p-space-lg rounded-xl border border-outline-variant/30">
+<h3 class="font-headline-sm text-on-surface">1. Color Palette Swatches</h3>
+<div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-space-md">
+<div class="flex flex-col space-y-2">
+<div class="w-full h-16 rounded-lg bg-[#100e0c] border border-outline-variant/30"></div>
+<span class="text-body-sm font-mono text-on-surface">#100e0c</span>
+<span class="text-body-sm text-outline">Surface Dark</span>
+</div>
+<div class="flex flex-col space-y-2">
+<div class="w-full h-16 rounded-lg bg-[#1c1916] border border-outline-variant/30"></div>
+<span class="text-body-sm font-mono text-on-surface">#1c1916</span>
+<span class="text-body-sm text-outline">Raised Panel</span>
+</div>
+<div class="flex flex-col space-y-2">
+<div class="w-full h-16 rounded-lg bg-[#26231e] border border-outline-variant/30"></div>
+<span class="text-body-sm font-mono text-on-surface">#26231e</span>
+<span class="text-body-sm text-outline">Input Fill</span>
+</div>
+<div class="flex flex-col space-y-2">
+<div class="w-full h-16 rounded-lg bg-[#3a332b] border border-outline-variant/30"></div>
+<span class="text-body-sm font-mono text-on-surface">#3a332b</span>
+<span class="text-body-sm text-outline">Outline</span>
+</div>
+<div class="flex flex-col space-y-2">
+<div class="w-full h-16 rounded-lg bg-[#e8b84a]"></div>
+<span class="text-body-sm font-mono text-on-surface">#e8b84a</span>
+<span class="text-body-sm text-outline">Primary Accent</span>
+</div>
+<div class="flex flex-col space-y-2">
+<div class="w-full h-16 rounded-lg bg-[#3b1820]"></div>
+<span class="text-body-sm font-mono text-on-surface">#3b1820</span>
+<span class="text-body-sm text-outline">Error Container</span>
+</div>
+<div class="flex flex-col space-y-2">
+<div class="w-full h-16 rounded-lg bg-[#13261b]"></div>
+<span class="text-body-sm font-mono text-on-surface">#13261b</span>
+<span class="text-body-sm text-outline">Rating Badge</span>
+</div>
+</div>
+</div>
+<!-- 2. Typography Scale -->
+<div class="flex flex-col space-y-space-md bg-surface-container-low p-space-lg rounded-xl border border-outline-variant/30">
+<h3 class="font-headline-sm text-on-surface">2. Typography Scale</h3>
+<div class="space-y-space-md divide-y divide-outline-variant/20">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between pt-2">
+<span class="text-[12px] uppercase font-mono text-primary tracking-[0.06em]">Brand mark (12px uppercase 0.06em accent)</span>
+<span class="text-body-sm text-outline font-mono">12px / 16px</span>
+</div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between pt-2">
+<span class="text-[30px] font-semibold text-on-surface">Page title (30px w650)</span>
+<span class="text-body-sm text-outline font-mono">30px / 36px</span>
+</div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between pt-2">
+<span class="text-[20px] font-medium text-on-surface">Section title (20px)</span>
+<span class="text-body-sm text-outline font-mono">20px / 28px</span>
+</div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between pt-2">
+<span class="text-[20px] font-medium text-on-surface">Card name (20px)</span>
+<span class="text-body-sm text-outline font-mono">20px / 28px</span>
+</div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between pt-2">
+<span class="text-[16px] text-on-surface">Body text (16px standard)</span>
+<span class="text-body-sm text-outline font-mono">16px / 24px</span>
+</div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between pt-2">
+<span class="text-[14px] text-outline">Hints and metadata (14px muted)</span>
+<span class="text-body-sm text-outline font-mono">14px / 20px</span>
+</div>
+</div>
+</div>
+<!-- 3. Spacing & Radius Specs -->
+<div class="flex flex-col space-y-space-md bg-surface-container-low p-space-lg rounded-xl border border-outline-variant/30">
+<h3 class="font-headline-sm text-on-surface">3. Spacing & Radius Specs</h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-space-md">
+<div class="p-space-md bg-surface-container rounded-lg">
+<div class="text-label-md text-primary font-medium">Max Width</div>
+<div class="text-headline-md text-on-surface mt-1">720px</div>
+<div class="text-body-sm text-outline mt-1">Centered layout container</div>
+</div>
+<div class="p-space-md bg-surface-container rounded-lg">
+<div class="text-label-md text-primary font-medium">Padding</div>
+<div class="text-headline-md text-on-surface mt-1">22px</div>
+<div class="text-body-sm text-outline mt-1">Standard inner canvas padding</div>
+</div>
+<div class="p-space-md bg-surface-container rounded-lg">
+<div class="text-label-md text-primary font-medium">Panel Radius</div>
+<div class="text-headline-md text-on-surface mt-1">13px</div>
+<div class="text-body-sm text-outline mt-1">Containers and major cards</div>
+</div>
+<div class="p-space-md bg-surface-container rounded-lg">
+<div class="text-label-md text-primary font-medium">Input/Button Radius</div>
+<div class="text-headline-md text-on-surface mt-1">8px</div>
+<div class="text-body-sm text-outline mt-1">Interactive elements</div>
+</div>
+</div>
+</div>
+<!-- 4. Component States Showcase -->
+<div class="flex flex-col space-y-space-md bg-surface-container-low p-space-lg rounded-xl border border-outline-variant/30">
+<h3 class="font-headline-sm text-on-surface mb-2">4. Component States Inventory</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-lg">
+<!-- AppHeader State -->
+<div class="p-space-md bg-surface-container rounded-lg flex flex-col space-y-2">
+<span class="text-label-sm text-primary font-mono uppercase">AppHeader</span>
+<div class="border border-outline-variant/30 p-space-md rounded-lg bg-surface">
+<div class="text-[12px] uppercase font-mono text-primary tracking-[0.06em]">Restaurant finder</div>
+<div class="text-[20px] font-medium text-on-surface mt-1">Find a restaurant</div>
+</div>
+</div>
+<!-- BudgetEdges State -->
+<div class="p-space-md bg-surface-container rounded-lg flex flex-col space-y-2">
+<span class="text-label-sm text-primary font-mono uppercase">BudgetEdges</span>
+<div class="border border-outline-variant/30 p-space-md rounded-lg bg-surface text-body-sm text-on-surface-variant">
+            Low: ≤ ₹300 | Medium: ₹300-₹2000 | High: > ₹2000
+          </div>
+</div>
+<!-- Field & Select State -->
+<div class="p-space-md bg-surface-container rounded-lg flex flex-col space-y-2">
+<span class="text-label-sm text-primary font-mono uppercase">Field / Select / TextInput / TextArea</span>
+<div class="space-y-2">
+<input class="w-full h-10 bg-surface-container-low border border-outline-variant rounded-lg px-3 text-on-surface text-body-sm" readonly="" type="text" value="Indiranagar"/>
+<div class="text-[14px] text-outline">Hint: Select neighborhood above</div>
+</div>
+</div>
+<!-- PrimaryButton & ErrorList State -->
+<div class="p-space-md bg-surface-container rounded-lg flex flex-col space-y-2">
+<span class="text-label-sm text-primary font-mono uppercase">PrimaryButton & ErrorList</span>
+<div class="flex flex-col space-y-3">
+<button class="h-12 bg-primary text-on-primary font-bold text-label-md rounded-lg">Find restaurants</button>
+<div class="p-2 bg-[#3b1820] text-error text-body-sm rounded-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">error</span>
+<span>Please select a valid location and budget tier.</span>
+</div>
+</div>
+</div>
+<!-- ResultHeader & SummaryBanner State -->
+<div class="p-space-md bg-surface-container rounded-lg flex flex-col space-y-2">
+<span class="text-label-sm text-primary font-mono uppercase">ResultHeader & SummaryBanner</span>
+<div class="space-y-2">
+<div class="text-[20px] font-medium text-on-surface">Matching Venues (4)</div>
+<div class="p-3 bg-surface-container-highest rounded-lg text-body-sm text-on-surface-variant">
+              Showing 4 authenticated spots in Indiranagar under Medium budget.
+            </div>
+</div>
+</div>
+<!-- FallbackNotice & EmptyState State -->
+<div class="p-space-md bg-surface-container rounded-lg flex flex-col space-y-2">
+<span class="text-label-sm text-primary font-mono uppercase">FallbackNotice & EmptyState</span>
+<div class="p-3 bg-surface border border-outline-variant/30 rounded-lg text-center space-y-1">
+<span class="material-symbols-outlined text-outline">search_off</span>
+<div class="text-body-md text-on-surface font-medium">No exact matches found</div>
+<div class="text-[14px] text-outline">Try expanding your budget filter or selecting an adjacent neighborhood.</div>
+</div>
+</div>
+<!-- RestaurantCard & MetaRow State -->
+<div class="p-space-md bg-surface-container rounded-lg flex flex-col space-y-2 md:col-span-2">
+<span class="text-label-sm text-primary font-mono uppercase">RestaurantCard & MetaRow & YesNo</span>
+<div class="p-4 bg-surface rounded-xl border border-outline-variant/30 flex flex-col space-y-3">
+<div class="flex justify-between items-start">
+<div>
+<div class="text-[20px] font-medium text-on-surface">Toit Brewpub</div>
+<div class="text-[14px] text-outline">Indiranagar • Microbrewery, Continental</div>
+</div>
+<div class="px-2 py-1 bg-[#13261b] text-primary text-[12px] font-bold rounded">4.6 ★</div>
+</div>
+<div class="flex items-center justify-between text-[14px] text-on-surface-variant pt-2 border-t border-outline-variant/20">
+<span>Budget: ₹2,000 for two</span>
+<div class="flex items-center gap-4">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px] text-primary">check_circle</span> Outdoor seating: Yes</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px] text-outline">cancel</span> Valet: No</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Client-side script for simple tab switching demo -->
+<script>
+    function switchTab(tab) {
+      const homeView = document.getElementById('view-home');
+      const compView = document.getElementById('view-components');
+      const homeBtn = document.getElementById('tab-home');
+      const compBtn = document.getElementById('tab-components');
+
+      if (tab === 'home') {
+        homeView.classList.remove('hidden');
+        homeView.classList.add('flex');
+        compView.classList.remove('flex');
+        compView.classList.add('hidden');
+
+        homeBtn.className = "px-space-md py-space-sm rounded-lg bg-primary text-on-primary font-bold text-label-md transition-all";
+        compBtn.className = "px-space-md py-space-sm rounded-lg bg-surface-container text-on-surface-variant hover:text-on-surface font-medium text-label-md transition-all";
+      } else {
+        compView.classList.remove('hidden');
+        compView.classList.add('flex');
+        homeView.classList.remove('flex');
+        homeView.classList.add('hidden');
+
+        compBtn.className = "px-space-md py-space-sm rounded-lg bg-primary text-on-primary font-bold text-label-md transition-all";
+        homeBtn.className = "px-space-md py-space-sm rounded-lg bg-surface-container text-on-surface-variant hover:text-on-surface font-medium text-label-md transition-all";
+      }
+    }
+  </script>
+</div></main><footer class="w-full bg-surface-container-low py-margin mt-space-xl"><div class="max-w-7xl mx-auto px-margin flex flex-col md:flex-row items-center justify-between text-on-surface-variant text-body-sm"><p>© 2024 Saffron & Stone. Culinary Discovery in Bangalore.</p><div class="flex gap-space-lg mt-space-md md:mt-0"><a class="hover:text-on-surface" href="#">Privacy</a><a class="hover:text-on-surface" href="#">Terms</a><a class="hover:text-on-surface" href="#">Contact</a></div></div></footer></body></html>
