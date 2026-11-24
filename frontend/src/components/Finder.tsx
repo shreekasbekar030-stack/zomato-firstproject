@@ -1,13 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { AnimatePresence } from "motion/react";
+import { ReducedMotionConfig } from "@animate-ui/react/utils/motion";
 
 import { loadMeta, recommend } from "@/lib/api";
 import type { FormValues, Meta, Recommendation } from "@/lib/types";
 
 import { EmptyState } from "./EmptyState";
-import { ErrorBanner } from "./ErrorBanner";
 import { InfoIcon } from "./Icons";
+import { ResultItem, SoftLine, StatusBanner } from "./motion";
 import { PreferenceForm } from "./PreferenceForm";
 import { RestaurantCard } from "./RestaurantCard";
 
@@ -60,8 +62,9 @@ export function Finder() {
 
   return (
     <>
-      {offline ? <p className="status">{offline}</p> : null}
-      <ErrorBanner errors={errors} />
+      <StatusBanner open={offline.length > 0}>
+        <p className="status" role="alert">{offline}</p>
+      </StatusBanner>
       <div className={wide ? "stage wide" : "stage"}>
         <section className="finder">
           {wide ? (
@@ -75,7 +78,7 @@ export function Finder() {
               <header>
                 <p className="mark">Restaurant finder</p>
                 <h1>Find a restaurant</h1>
-                <p className="lede">Search Bangalore restaurants by location, budget, cuisine, and minimum rating.</p>
+                <SoftLine className="lede">Search Bangalore restaurants by location, budget, cuisine, and minimum rating.</SoftLine>
               </header>
               <BudgetText text={meta?.budgetText} />
             </>
@@ -95,13 +98,17 @@ export function Finder() {
             <h2>{count === 1 ? "1 restaurant" : `${count} restaurants`}</h2>
             {result.summary ? <p className="summary">{result.summary}</p> : null}
             {result.notice ? <p className="notice">{result.notice}</p> : null}
-            <ol className="cards">
-              {result.cards.map((card, index) => (
-                <li key={`${card.name}-${card.location}`}>
-                  <RestaurantCard card={card} rank={index + 1} />
-                </li>
-              ))}
-            </ol>
+            <ReducedMotionConfig>
+              <ol className="cards">
+                <AnimatePresence>
+                  {result.cards.map((card, index) => (
+                    <ResultItem key={`${card.name}-${card.location}`} index={index}>
+                      <RestaurantCard card={card} rank={index + 1} />
+                    </ResultItem>
+                  ))}
+                </AnimatePresence>
+              </ol>
+            </ReducedMotionConfig>
           </section>
         ) : null}
       </div>

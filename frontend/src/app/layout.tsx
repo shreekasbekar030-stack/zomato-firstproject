@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Karla, Playfair_Display_SC } from "next/font/google";
 
 import { SiteHeader } from "@/components/SiteHeader";
 
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
+const karla = Karla({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
+const display = Playfair_Display_SC({ subsets: ["latin"], weight: ["400", "700"], variable: "--font-display" });
 
 export const metadata: Metadata = {
   title: "Find a restaurant",
@@ -14,8 +15,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html lang="en" className={display.variable}>
+      <body className={karla.className}>
         <SiteHeader />
         <main className="wrap">{children}</main>
       </body>

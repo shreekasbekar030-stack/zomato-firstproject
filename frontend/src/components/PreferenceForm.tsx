@@ -1,4 +1,11 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+
 import type { FormValues, Meta } from "@/lib/types";
+
+import { ErrorBanner } from "./ErrorBanner";
+import { CuisineChip, PressButton, StatusBanner } from "./motion";
 
 const CUISINES = [
   "Chinese",
@@ -36,23 +43,46 @@ export function PreferenceForm({ meta, values, errors, pending, onChange, onSubm
           ["high", `High (above ₹${high} for two)`],
         ];
 
+  const summaryRef = useRef<HTMLElement>(null);
+  const locationError = messageFor(errors, "location");
+  const budgetError = messageFor(errors, "budget");
+  const cuisineError = messageFor(errors, "cuisine");
+  const ratingError = messageFor(errors, "rating");
+  const extraError = messageFor(errors, "extra preference");
+
+  useEffect(() => {
+    if (errors.length > 0) {
+      summaryRef.current?.focus();
+    }
+  }, [errors]);
+
   function set<K extends keyof FormValues>(key: K, value: FormValues[K]) {
     onChange({ ...values, [key]: value });
   }
 
   return (
     <form
+      aria-busy={pending}
       onSubmit={(event) => {
         event.preventDefault();
         onSubmit();
       }}
     >
-      <div className={fieldClass(errors, "location")}>
+      <StatusBanner open={errors.length > 0} className="span">
+        <ErrorBanner errors={errors} summaryRef={summaryRef} />
+      </StatusBanner>
+      <div className={locationError ? "field bad" : "field"}>
         <div className="label-row">
           <label htmlFor="location">Location</label>
           <span className="req">Required</span>
         </div>
-        <select id="location" value={values.location} onChange={(event) => set("location", event.target.value)}>
+        <select
+          id="location"
+          value={values.location}
+          aria-invalid={locationError ? true : undefined}
+          aria-describedby={locationError ? "location-hint location-error" : "location-hint"}
+          onChange={(event) => set("location", event.target.value)}
+        >
           <option value="">Choose a location</option>
           {(meta?.locations ?? ["Bangalore", "Bengaluru"]).map((name) => (
             <option key={name} value={name}>
@@ -60,14 +90,21 @@ export function PreferenceForm({ meta, values, errors, pending, onChange, onSubm
             </option>
           ))}
         </select>
-        <p className="hint">Bangalore and Bengaluru include every neighborhood.</p>
+        <p id="location-hint" className="hint">Bangalore and Bengaluru include every neighborhood.</p>
+        {locationError ? <p id="location-error" className="field-error">{locationError}</p> : null}
       </div>
-      <div className={fieldClass(errors, "budget")}>
+      <div className={budgetError ? "field bad" : "field"}>
         <div className="label-row">
           <label htmlFor="budget">Budget</label>
           <span className="req">Required</span>
         </div>
-        <select id="budget" value={values.budget} onChange={(event) => set("budget", event.target.value)}>
+        <select
+          id="budget"
+          value={values.budget}
+          aria-invalid={budgetError ? true : undefined}
+          aria-describedby={budgetError ? "budget-hint budget-error" : "budget-hint"}
+          onChange={(event) => set("budget", event.target.value)}
+        >
           <option value="">Choose a budget</option>
           {bands.map(([value, label]) => (
             <option key={value} value={value}>
@@ -75,9 +112,10 @@ export function PreferenceForm({ meta, values, errors, pending, onChange, onSubm
             </option>
           ))}
         </select>
-        <p className="hint">Approximate cost for two people.</p>
+        <p id="budget-hint" className="hint">Approximate cost for two people.</p>
+        {budgetError ? <p id="budget-error" className="field-error">{budgetError}</p> : null}
       </div>
-      <div className={`field span${mentions(errors, "cuisine") ? " bad" : ""}`}>
+      <div className={`field span${cuisineError ? " bad" : ""}`}>
         <div className="label-row">
           <label htmlFor="cuisine">Cuisine</label>
         </div>
@@ -85,23 +123,21 @@ export function PreferenceForm({ meta, values, errors, pending, onChange, onSubm
           id="cuisine"
           value={values.cuisine}
           placeholder="Or type one cuisine"
+          aria-invalid={cuisineError ? true : undefined}
+          aria-describedby={cuisineError ? "cuisine-hint cuisine-error" : "cuisine-hint"}
           onChange={(event) => set("cuisine", event.target.value)}
         />
         <div className="picks">
           {CUISINES.map((name) => (
-            <button
-              key={name}
-              type="button"
-              className={values.cuisine === name ? "on" : undefined}
-              onClick={() => set("cuisine", values.cuisine === name ? "" : name)}
-            >
+            <CuisineChip key={name} selected={values.cuisine === name} onClick={() => set("cuisine", values.cuisine === name ? "" : name)}>
               {name}
-            </button>
+            </CuisineChip>
           ))}
         </div>
-        <p className="hint">Optional. Choose one cuisine, or leave this blank to include every cuisine.</p>
+        <p id="cuisine-hint" className="hint">Optional. Choose one cuisine, or leave this blank to include every cuisine.</p>
+        {cuisineError ? <p id="cuisine-error" className="field-error">{cuisineError}</p> : null}
       </div>
-      <div className={fieldClass(errors, "rating")}>
+      <div className={ratingError ? "field bad" : "field"}>
         <div className="label-row">
           <label htmlFor="min_rating">Minimum rating</label>
         </div>
@@ -110,11 +146,14 @@ export function PreferenceForm({ meta, values, errors, pending, onChange, onSubm
           inputMode="decimal"
           value={values.minRating}
           placeholder="4"
+          aria-invalid={ratingError ? true : undefined}
+          aria-describedby={ratingError ? "rating-hint rating-error" : "rating-hint"}
           onChange={(event) => set("minRating", event.target.value)}
         />
-        <p className="hint">A number from 0 to 5.</p>
+        <p id="rating-hint" className="hint">A number from 0 to 5.</p>
+        {ratingError ? <p id="rating-error" className="field-error">{ratingError}</p> : null}
       </div>
-      <div className={`field span${mentions(errors, "extra preference") ? " bad" : ""}`}>
+      <div className={`field span${extraError ? " bad" : ""}`}>
         <div className="label-row">
           <label htmlFor="extra">Extra preference</label>
         </div>
@@ -123,21 +162,18 @@ export function PreferenceForm({ meta, values, errors, pending, onChange, onSubm
           rows={3}
           value={values.extra}
           placeholder="Family-friendly or quick service"
+          aria-invalid={extraError ? true : undefined}
+          aria-describedby={extraError ? "extra-hint extra-error" : "extra-hint"}
           onChange={(event) => set("extra", event.target.value)}
         />
-        <p className="hint">Optional. This does not filter the list.</p>
+        <p id="extra-hint" className="hint">Optional. This does not filter the list.</p>
+        {extraError ? <p id="extra-error" className="field-error">{extraError}</p> : null}
       </div>
-      <button className="span" type="submit" disabled={pending}>
-        {pending ? "Finding restaurants…" : "Find restaurants"}
-      </button>
+      <PressButton className="span" type="submit" disabled={pending} label={pending ? "Finding restaurants…" : "Find restaurants"} />
     </form>
   );
 }
 
-function fieldClass(errors: string[], needle: string) {
-  return mentions(errors, needle) ? "field bad" : "field";
-}
-
-function mentions(errors: string[], needle: string) {
-  return errors.some((error) => error.toLowerCase().includes(needle));
+function messageFor(errors: string[], needle: string) {
+  return errors.find((error) => error.toLowerCase().includes(needle));
 }

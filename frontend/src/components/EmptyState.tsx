@@ -9,6 +9,7 @@ export function EmptyState({ preferences }: { preferences: Preferences }) {
       </div>
       <h2>No restaurants match</h2>
       <p>No restaurants match location, budget, cuisine, and minimum rating.</p>
+      <p>Try one cuisine, a wider budget, or a lower minimum rating.</p>
       <div className="facts">
         <p>Location: {preferences.location}</p>
         <p>Budget: {preferences.budget}</p>
