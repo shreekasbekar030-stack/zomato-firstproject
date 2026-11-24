@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import argparse
 import os
+import threading
 from pathlib import Path
 from urllib.parse import parse_qs
 
@@ -101,9 +102,22 @@ def main(argv: list[str] | None = None) -> None:
     parser.add_argument("--port", type=int, default=int(os.environ.get("PORT", "8000")))
     args = parser.parse_args(argv)
     catalog = load_catalog(args.catalog)
+    app = create_app(catalog)
+    # A domain created from the old image still targets 8000. Railway's PORT is 8080.
+    if os.environ.get("PORT") and args.port != 8000:
+        threading.Thread(
+            target=_serve,
+            args=(app, args.host, 8000),
+            name="listen-8000",
+            daemon=True,
+        ).start()
+    _serve(app, args.host, args.port)
+
+
+def _serve(app: FastAPI, host: str, port: int) -> None:
     import uvicorn
 
-    uvicorn.run(create_app(catalog), host=args.host, port=args.port)
+    uvicorn.run(app, host=host, port=port)
 
 
 if __name__ == "__main__":

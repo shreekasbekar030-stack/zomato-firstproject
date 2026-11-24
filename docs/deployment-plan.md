@@ -61,7 +61,7 @@ INFO:     Application startup complete.
 INFO:     Uvicorn running on http://0.0.0.0:8080
 ```
 
-The public URL fails when the domain's target port is still 8000. Set it to the port in that log, which is 8080.
+The public URL fails when the domain's target port is still 8000. Set it to the port in that log, which is 8080. The process also listens on 8000 when `PORT` is a different port, so a domain left on 8000 still reaches the API.
 
 ### 3. Allow the Vercel origin
 

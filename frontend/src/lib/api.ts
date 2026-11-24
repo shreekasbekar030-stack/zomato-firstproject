@@ -1,6 +1,6 @@
 import type { Meta, Recommendation } from "./types";
 
-export const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://127.0.0.1:8000";
+export const API_URL = (process.env.NEXT_PUBLIC_API_URL ?? "http://127.0.0.1:8000").replace(/\/+$/, "");
 
 export async function loadMeta(): Promise<Meta> {
   const response = await fetch(`${API_URL}/api/meta`);
@@ -28,9 +28,26 @@ export async function recommend(values: {
       extra: values.extra,
     }),
   });
-  const body = (await response.json()) as Recommendation & { errors?: string[] };
+  const body = (await response.json()) as Recommendation & {
+    errors?: string[];
+    detail?: unknown;
+    message?: unknown;
+  };
   if (!response.ok) {
-    return { status: response.status, errors: body.errors ?? ["The search could not be completed."], result: null };
+    return { status: response.status, errors: errorMessages(body), result: null };
   }
   return { status: response.status, errors: [], result: body };
+}
+
+function errorMessages(body: { errors?: string[]; detail?: unknown; message?: unknown }): string[] {
+  if (Array.isArray(body.errors) && body.errors.length > 0) {
+    return body.errors.map(String);
+  }
+  if (typeof body.detail === "string" && body.detail.trim()) {
+    return [body.detail];
+  }
+  if (typeof body.message === "string" && body.message.trim()) {
+    return [body.message];
+  }
+  return ["The search could not be completed."];
 }
